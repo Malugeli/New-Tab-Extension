@@ -52,3 +52,14 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 chrome.tabs.onRemoved.addListener((tabId) => {
   redirectedTabIds.delete(tabId);
 });
+
+const KEEPALIVE_ALARM_NAME = "keep-worker-warm";
+
+function createKeepaliveAlarm() {
+  chrome.alarms.create(KEEPALIVE_ALARM_NAME, { periodInMinutes: 0.5 });
+}
+
+chrome.alarms.onAlarm.addListener(() => {});
+
+chrome.runtime.onInstalled.addListener(createKeepaliveAlarm);
+chrome.runtime.onStartup.addListener(createKeepaliveAlarm);

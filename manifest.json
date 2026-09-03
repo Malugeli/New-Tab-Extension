@@ -1,10 +1,11 @@
 {
   "manifest_version": 3,
   "name": "GitHub Notes New Tab",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "description": "Opens a configured URL in every new tab.",
   "permissions": [
-    "tabs"
+    "tabs",
+    "alarms"
   ],
   "background": {
     "service_worker": "background.js"
